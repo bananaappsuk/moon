@@ -1,4 +1,4 @@
-
+@search
 Feature: Search keyword
 
   Scenario Outline: Search with valid keywords and check results
@@ -14,7 +14,7 @@ Feature: Search keyword
     |Astronomy Computer|
     |Astronomy's|
     |Maths 1    |
-  @search
+
   Scenario Outline: Search with valid keywords and check results
 
     Given user is in search page
