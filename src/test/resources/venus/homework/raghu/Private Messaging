@@ -1,8 +1,0 @@
-Feature: Private Messaging
-  Scenario: Private Messaging is useful for forums
-    Given I am on the base Url nopecommerce
-    And I am on the Inbox link the Private messaging is available
-    When Private messaging is disabled by default by the administrator. this feature should be enabled by the following steps:From the Administration Area, select Configuration > Settings > Forum Settings. Ensure Allow private messages are checked
-    Then I should see no errors on posting any messages on to the forums with PM highlighted.
-
-

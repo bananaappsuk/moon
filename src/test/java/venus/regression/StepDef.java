@@ -22,13 +22,13 @@ import java.util.Random;
  */
 public class StepDef {
     static WebDriver driver = BaseTest.driver;
+    String keyword;
 
     @Before
     public void beforeStep()
     {
         System.out.println("I am starting pre condition checks ......");
-        driver.findElement(By.className("header-logo")).click();
-        Assert.assertTrue("Checking the welcome message shown ", driver.findElement(By.tagName("body")).getText().contains("Welcome to our store"));
+        Assert.assertTrue("Checking the welcome message shown ", driver.findElement(By.id("logo")).isDisplayed());
     }
 
     @After
@@ -99,5 +99,41 @@ public class StepDef {
 //            ((TakesScreenshot)driver).getScreenshotAs()
 //        }
     }
+
+
+    @Given("^user is in search page$")
+    public void user_is_in_search_page() throws Throwable {
+        Assert.assertTrue(driver.findElement(By.id("query")).isDisplayed());
+    }
+
+    @When("^search by \"(.*?)\"$")
+    public void search_by(String keyword) throws Throwable {
+        this.keyword = keyword;
+        driver.findElement(By.id("query")).clear();
+        driver.findElement(By.id("query")).sendKeys(keyword);
+        Thread.sleep(2000);
+        driver.findElement(By.id("search")).click();
+    }
+
+    @Then("^atleast (\\d+) result should be shown$")
+    public void atleast_result_should_be_shown(int keyword) throws Throwable {
+            Assert.assertTrue(driver.findElement(By.className("content-item-list")).findElements(By.tagName("li")).size()>0);
+    }
+
+
+    @Then("^the result page should have keyword in it$")
+    public void the_result_page_should_have_keyword_in_it() throws Throwable {
+        Assert.assertTrue(driver.findElement(By.tagName("body")).getText().contains(keyword));
+    }
+
+
+
+    @Then("^message \"(.*?)\" should be shown$")
+    public void message_should_be_shown(String arg1) throws Throwable {
+        Assert.assertTrue(driver.findElement(By.tagName("body")).getText().contains("0 Result(s) for "));
+    }
+
+
+
 
 }

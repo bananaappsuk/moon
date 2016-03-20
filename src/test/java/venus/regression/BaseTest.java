@@ -41,7 +41,7 @@ public class BaseTest {
         System.out.println("Opening the home page...... "+Env.homeURL);
         driver.get(Env.homeURL);
         System.out.println("Checking the home page is shown......");
-        Assert.assertTrue("Checking the welcome message shown ",driver.findElement(By.tagName("body")).getText().contains("Welcome to our store"));
+        Assert.assertTrue("Checking the welcome message shown ",driver.findElement(By.tagName("body")).getText().contains("Providing researchers"));
     }
     @AfterClass
     public static void stop()

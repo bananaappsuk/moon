@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Cucumber.class)
 @Cucumber.Options(format = {"pretty", "html:target/eurostar-html-report", "json:target/eurostar_report.json"},
-        tags="@1"
+        tags="@search"
 )
 public class RunScenarios extends BaseTest{
 
